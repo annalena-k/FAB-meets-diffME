@@ -1,0 +1,67 @@
+[build-system]
+requires = ["setuptools>=62.0", "setuptools_scm[toml]>=6.2"]
+build-backend = "setuptools.build_meta"
+
+
+[project]
+name = "fab-meets-diffME"
+authors = [ 
+    {name = "Annalena Kofler", email = "annalena.kofler1@gmail.com"},
+]
+description = "Flow Annealed Importance Sampling Bootstrap meets Differentiable Matrix Elements in JAX"
+license = {text = "MIT"}
+readme = "README.md"
+requires-python = ">=3.9"
+dynamic = ["version"]
+
+
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent"
+]
+
+
+dependencies = [
+    "chex",
+    "corner",
+    "cython",
+    "distrax",
+    "dm-haiku",
+    "fabjax@git+https://github.com/lollcat/fab-jax.git",
+    "jax<=0.4.13",
+    "jaxlib<=0.4.13",
+    "jupyter",
+    "matplotlib",
+    "numpy",
+    "optax",
+    "pandas",
+    "pylhe",
+    "pyyaml",
+    "sympy",
+    "tensorwaves",
+    "torch", # cpu version only
+    "vegas"
+]
+
+
+[tool.setuptools.packages.find]
+include = ["FABdiffME"]
+
+
+[tool.setuptools_scm]
+write_to = "FABdiffME/_version.py"
+
+
+[project.urls]
+homepage = "https://github.com/annalena-k/FAB-meets-diffME"
+
+
+[project.optional-dependencies]
+dev = [
+    "black",
+    "pylint",
+    "pytest",
+]
