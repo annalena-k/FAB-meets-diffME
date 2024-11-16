@@ -15,7 +15,7 @@ This repository contains the code for the research paper:
 
 To install the code in this repository, clone the code with
 ```bash
-git clone TODO
+git clone git@github.com:annalena-k/FAB-meets-diffME.git
 ```
 and create a new virtual environment:
 ```bash
@@ -29,7 +29,7 @@ After activating the environment via
 ```bash
 source venv-fab-meets-diffme/bin/activate
 ```
-you need to enter the cloned directory
+and (potentially) upgrading `pip` with `pip install --upagrade pip`, you need to enter the cloned directory
 ```bash
 cd FAB-meets-diffME
 ```
