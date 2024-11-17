@@ -1,7 +1,3 @@
-# Config file specifying the setup of a neural spine flow with distrax and fKLD training
-
-# Visualization of flow comparison
-
 target:
   name: lambdac
   dim: 2
