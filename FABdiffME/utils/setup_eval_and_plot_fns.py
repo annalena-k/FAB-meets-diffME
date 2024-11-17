@@ -31,11 +31,16 @@ def setup_intermediate_plot_fn(
     def get_data_for_plotting(
         state: TrainingState, key: chex.PRNGKey
     ) -> Tuple[chex.Array, chex.Array, chex.Array]:
+        try:
+            params = state.params
+        except:
+            params = state.flow_params
+
         samples, log_q_samples = flow.sample_and_log_prob_apply(
-            state.params, key=key, shape=[plot_batch_size, flow.dim]
+            params, key=key, shape=[plot_batch_size, flow.dim]
         )
         if target.dim == 2:
-            log_q_grid = flow.log_prob_apply(state.params, grid_re)
+            log_q_grid = flow.log_prob_apply(params, grid_re)
             return samples, log_q_samples, log_q_grid
         else:
             return samples, log_q_samples
@@ -79,8 +84,13 @@ def setup_eval_fn(
 ) -> EvalFn:
 
     def eval_fn(state: TrainingState, prng_key: chex.PRNGKey) -> Dict:
+        try:
+            params = state.params
+        except:
+            params = state.flow_params
+
         def log_q_fn(x: chex.Array) -> chex.Array:
-            return flow.log_prob_apply(state.params, x)
+            return flow.log_prob_apply(params, x)
 
         log_p_fn_jit = jax.jit(target.log_prob)
         # Validation loss
@@ -89,7 +99,7 @@ def setup_eval_fn(
         # Effective samples size
         log_ess, log_weights = evaluate_log_ess(
             flow.sample_and_log_prob_apply,
-            state.params,
+            params,
             prng_key,
             log_p_fn_jit,
             n_samples_ESS,
@@ -123,8 +133,13 @@ def setup_final_eval_and_plot_fn(
     def final_eval_and_plot_fn(
         state: TrainingState, info: Dict, key: chex.PRNGKey, eval_and_plot_iter: list
     ):
+        try:
+            params = state.params
+        except:
+            params = state.flow_params
+
         def log_q_fn(x: chex.Array) -> chex.Array:
-            return flow.log_prob_apply(state.params, x)
+            return flow.log_prob_apply(params, x)
 
         iteration = info["iteration"][-1]
         final_iteration = eval_and_plot_iter[-1]
@@ -307,7 +322,7 @@ def setup_final_eval_and_plot_fn(
             plot_density_comparison_and_flow_samples(
                 target,
                 flow,
-                state.params,
+                params,
                 key,
                 fig=fig,
                 axs=axs,
