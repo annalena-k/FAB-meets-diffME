@@ -1,0 +1,18 @@
+# Config file specifying the setup for VEGAS
+
+target:
+  name: ee_to_ttbar_wb
+  dim: 8
+  epsilon_boundary: 1.e-5       # prevent instable behavior at boundary of matrix element
+  center_of_mass_energy: 1000   # [GeV], only for madjax matrix elements
+  model_parameters: {}          # only for madjax matrix elements
+
+vegas:
+  iterations_warmup: 2
+  neval_warmup: 1.e+4
+  iterations: 8
+  neval: 1.e+5
+  alpha: 0.5
+  maxinc_axis: 128
+  save: True
+  save_root: ./paper_experiments/8d/ee_to_ttbar_wb/vegas/0

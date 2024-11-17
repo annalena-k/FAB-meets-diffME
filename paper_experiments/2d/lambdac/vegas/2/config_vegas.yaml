@@ -1,0 +1,16 @@
+# Config file specifying the setup for VEGAS
+
+target:
+  name: lambdac
+  dim: 2
+  epsilon_boundary: 1.e-5       # prevent instable behavior at boundary of matrix element
+
+vegas:
+  iterations_warmup: 2
+  neval_warmup: 1.e+3
+  iterations: 8
+  neval: 2.e+5
+  alpha: 0.5
+  maxinc_axis: 64
+  save: True
+  save_root: ./paper_experiments/2d/lambdac/vegas/2
