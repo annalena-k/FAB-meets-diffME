@@ -1,0 +1,61 @@
+target:
+  name: ee_to_ttbar_wb
+  dim: 8
+  center_of_mass_energy: 1000   # [GeV], only for madjax matrix elements
+  model_parameters: {}          # only for madjax matrix elements
+  epsilon_boundary: 1.e-5       # prevent instable behavior at boundary of matrix element
+  generator: madgraph_preprocessed  # generator of data: rejection sampling "rej" vs. "vegas" vs. "madgraph" vs. "madgraph_preprocessed"
+  n_samples_val: 1000000        # only multiple of n_samples_per_file = 1000
+  n_samples_test: 1000000       # only multiple of n_samples_per_file = 1000
+  n_samples_per_file: 100000
+  data_dir: ./data/ee_to_ttbar_wb
+
+model:
+  n_trafos: 14
+  n_bins: 14
+  n_bijector_params: 43 # 3*n_bins+1
+  hidden_layer_sizes: [400, 400]
+
+training:
+  type: fab
+  alpha: 2.             # alpha-divergence param
+  n_iterations: 10000000
+  batch_size: 1000
+  eval_batch_size: 1000 
+  plot_batch_size: 0 # 1000
+  n_samples_ESS: 1000000
+  n_eval_and_plot: 20
+  eval_and_plot_scale: log
+  n_checkpoints: 200
+  lr: 1.e-5
+  use_schedule: True
+  n_iter_total: 10000000        # has to match number of iterations 
+  n_iter_warmup: 1000
+  peak_lr: 3.e-4
+  end_lr: 1.e-5
+  dynamic_grad_ignore_and_clip: True # Ignore massive gradients.
+  seed: 43
+  save: True
+  save_root: ./paper_experiments/8d/ee_to_ttbar_wb/fab/no_buffer_hmc/2
+  use_64_bit: True      # Can help improve stability.
+
+buffer:
+  with_buffer: False
+  n_updates_per_smc_forward_pass: 2
+  w_adjust_clip: 10.
+
+smc:
+  use_resampling: False
+  use_hmc: True
+  hmc_n_outer_steps: 1
+  hmc_init_step_size: 0.005
+  metro_n_outer_steps: 2   # Corresponds to steps in Markov chain going from one intermediate distribution to the next
+  hmc_n_inner_steps: 3
+  metro_init_step_size: 0.2 # Needs to be big enough to jump between modes
+  target_p_accept : 0.65
+  n_intermediate_distributions: 2 # Corresponds to index M in equation (3) of FAB paper
+  spacing_type: linear
+  point_is_valid_fn:
+    type: in_bounds
+    min: 0.
+    max: 1.
