@@ -1,0 +1,40 @@
+target:
+  name: ee_to_ttbar_wb
+  dim: 8
+  center_of_mass_energy: 1000   # [GeV], only for madjax matrix elements
+  model_parameters: {}          # only for madjax matrix elements
+  epsilon_boundary: 1.e-5       # prevent instable behavior at boundary of matrix element
+  generator: madgraph_preprocessed   # generator of data: rejection sampling "rej" vs. "vegas" vs. "madgraph"
+  n_samples_train: 1000000      # only multiple of n_samples_per_file = 1000
+  n_samples_val: 1000000        # only multiple of n_samples_per_file = 1000
+  n_samples_test: 1000000       # only multiple of n_samples_per_file = 1000
+  n_samples_per_file: 100000
+  data_dir: ./data/ee_to_ttbar_wb
+
+model:
+  n_trafos: 14
+  n_bins: 14
+  n_bijector_params: 43 # 3*n_bins+1
+  hidden_layer_sizes: [400, 400]
+
+training:
+  type: fkld
+  epochs: 100
+  batch_size: 1000
+  #eval_batch_size: 1000 # 256  
+  plot_batch_size: 1000 # 1000
+  n_samples_ESS: 1000000
+  n_eval_and_plot: 25
+  eval_and_plot_scale: linear # or log
+  n_checkpoints: 10
+  lr: 1.0e-05
+  use_schedule: True
+  n_iter_total: 100
+  n_iter_warmup: 10
+  peak_lr: 0.0003
+  end_lr: 1.0e-05
+  dynamic_grad_ignore_and_clip: True # Ignore massive gradients.
+  seed: 42
+  save: True
+  save_root: ./paper_experiments/8d/ee_to_ttbar_wb/fkld/1
+  use_64_bit: True            # Can help improve stability.
