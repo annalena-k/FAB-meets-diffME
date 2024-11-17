@@ -16,6 +16,7 @@ from FABdiffME.train.generic_training_loop import (
 )
 from FABdiffME.sampling.metrics import integral_estimate
 from FABdiffME.utils.plot import *
+from FABdiffME.utils.config import Dirs
 
 
 def setup_intermediate_plot_fn(
