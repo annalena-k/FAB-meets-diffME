@@ -18,10 +18,10 @@ Det = chex.Array
 class PI1300(HEP2DTarget):
     def __init__(
         self,
+        dim: int = 2,
         MASSES: Arr = jnp.array([1.3, 0.14, 0.14, 0.14]),
         R1: Arr = jnp.array([1.0, 0.77, 0.15]),  # [c, M, GAMMA],
         R2: Arr = jnp.array([1.0, 0.77, 0.15]),  # [c, M, GAMMA],
-        dim: int = 2,
     ):
         self.m0, self.m1, self.m2, self.m3 = MASSES
         self.R1 = R1
