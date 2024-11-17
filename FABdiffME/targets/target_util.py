@@ -61,53 +61,58 @@ def load_target(
     center_of_mass_energy: float, specifies center of mass energy of scattering
     model_parameters: dict, ={} for default parameters, see ee_to_mumu_test.ipynb for non-standard example
     """
-    if name == "pi1800":
+    if name == "pi1300":
         assert dim == None or dim == 2
-        from diffME.targets.pi1300 import PI1800
+        from FABdiffME.targets.pi1300 import PI1300
 
-        target = PI1800()
+        target = PI1300()
     elif name == "lambdac":
         # path is folder path, e.g. diffME/targets/lambdac_model.pkl
         assert dim == None or dim == 2
-        from diffME.targets.lambdac import Lambdac
+        from FABdiffME.targets.lambdac import Lambdac
 
-        target = Lambdac(path_to_ComPWA_matrix_element=path_to_target)
+        target = Lambdac()
     elif name == "ee_to_mumu":
         # path is module path, e.g. diffME.targets.madjax_ee_to_mumu
         assert dim is not None and center_of_mass_energy is not None, (
             model_parameters is not None
         )
-        from diffME.targets.ee_to_mumu import EeToMumu
+        from FABdiffME.targets.ee_to_mumu import EeToMumu
 
         target = EeToMumu(
-            path_to_target,
-            dim,
-            center_of_mass_energy,
-            model_parameters,
-            epsilon_boundary,
+            dim=dim,
+            center_of_mass_energy=center_of_mass_energy,
+            model_parameters=model_parameters,
+            epsilon_boundary=epsilon_boundary,
         )
     elif name == "ee_to_ttbar" or name == "ee_to_ttbar_wb":
         # path is module path, e.g. diffME.targets.madjax_ee_to_ttbar
         assert dim is not None and center_of_mass_energy is not None, (
             model_parameters is not None
         )
-        from diffME.targets.madjax_target import MadjaxTarget
+        from FABdiffME.targets.madjax_target import MadjaxTarget
 
         target = MadjaxTarget(
-            path_to_target,
-            dim,
-            name,
-            center_of_mass_energy,
-            model_parameters,
-            epsilon_boundary,
+            dim=dim,
+            name=name,
+            center_of_mass_energy=center_of_mass_energy,
+            model_parameters=model_parameters,
+            epsilon_boundary=epsilon_boundary,
         )
     elif name == "gaussian":
         assert dim is not None
-        from diffME.targets.gaussian import Gaussian
+        from FABdiffME.targets.gaussian import Gaussian
 
-        target = Gaussian(dim)
+        target = Gaussian(dim=dim)
+    elif name == "crossed_ring":
+        from FABdiffME.targets.crossed_ring import CrossedRing
+
+        assert dim == 2
+        target = CrossedRing()
     else:
-        print("Type of matrix element not part of [pi1800, lambdac, ee_to_mumu]")
+        print(
+            "Type of matrix element not part of [pi1300, lambdac, ee_to_mumu, ee_to_ttbar_wb, ee_to_ttbar, crossed_ring, gaussian]"
+        )
         target = None
     return target
 

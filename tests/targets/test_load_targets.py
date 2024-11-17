@@ -3,6 +3,7 @@ import jax.numpy as jnp
 from FABdiffME.targets.crossed_ring import CrossedRing
 from FABdiffME.targets.gaussian import Gaussian
 from FABdiffME.targets.pi1300 import PI1300
+from FABdiffME.targets.lambdac import Lambdac
 from FABdiffME.targets.ee_to_mumu import EeToMumu
 from FABdiffME.targets.target_util import load_target
 
@@ -35,6 +36,16 @@ def test_load_pi1300():
     target = load_target(name="pi1300", dim=dim)
     v1 = target.log_prob(jnp.array([0.5] * dim))
     target = PI1300()
+    v2 = target.log_prob(jnp.array([0.5] * dim))
+
+    assert v1 == v2
+
+
+def test_load_lambdac():
+    dim = 2
+    target = load_target(name="lambdac", dim=dim)
+    v1 = target.log_prob(jnp.array([0.5] * dim))
+    target = Lambdac()
     v2 = target.log_prob(jnp.array([0.5] * dim))
 
     assert v1 == v2
