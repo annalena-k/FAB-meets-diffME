@@ -11,7 +11,7 @@ authors = [
 description = "Flow Annealed Importance Sampling Bootstrap meets Differentiable Matrix Elements in JAX"
 license = {text = "MIT"}
 readme = "README.md"
-requires-python = ">=3.9"
+requires-python = ">=3.9, < 3.12"
 dynamic = ["version"]
 
 
@@ -19,6 +19,7 @@ classifiers = [
     "Programming Language :: Python :: 3",
     "Programming Language :: Python :: 3.9",
     "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
     "License :: OSI Approved :: MIT License",
     "Operating System :: OS Independent"
 ]
@@ -31,16 +32,17 @@ dependencies = [
     "distrax",
     "dm-haiku",
     "fabjax@git+https://github.com/lollcat/fab-jax.git",
-    "jax",
-    "jaxlib",
+    "jax<=0.4.23", # fabjax depends on an older nighlty built of blackjax which uses jax.random.PRNGKeyArray which was removed in jax==0.4.24
+    "jaxlib<=0.4.23",
     "jupyter",
     "matplotlib",
     "madjax@git+https://github.com/madjax-hep/madjax.git",
-    "numpy",
+    "numpy<2.0",
     "optax",
     "pandas",
     "pylhe",
     "pyyaml",
+    "scipy<1.12"
     "sympy",
     "tensorwaves",
     "torch", # cpu version only

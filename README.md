@@ -33,8 +33,7 @@ and (potentially) upgrading `pip` with `pip install --upagrade pip`, you need to
 ```bash
 cd FAB-meets-diffME
 ```
-In case of a GPU-capable machine, I can recommend first installing `JAX` following the instructions outlined on the [official webpage](https://jax.readthedocs.io/en/latest/installation.html) since the exact command depends on your local `cuda` version and might change with a new release.
-Tipp:`FAB` depends on a specificy `blackjax-nightly` release which is not compatible with every `JAX` version. If you run into dependency issues (like me), you might need to specify the `JAX` version explicitely. Releases that worked for me in the past are `jax==0.4.13 jaxlib==0.4.13` and `jax==0.4.23 jaxlib==0.4.23`.
+In case of a GPU-capable machine, I recommend first installing `JAX` following the instructions outlined on the [official webpage](https://jax.readthedocs.io/en/latest/installation.html) since the exact command depends on your local `cuda` version and might change with a new release.
 
 Finally, you can install (the rest of) the code with
 ```bash
@@ -49,9 +48,13 @@ pip install -e ."[dev]"
 
 If you find this code useful, please cite our paper:
 
+> Annalena Kofler, Vincent Stimper, Mikhail Mikhasenko, Michael Kagan, Lukas Heinrich.
+> Flow Annealed Importance Sampling Bootstrap meets Differentiable Particle Physics. Machine Learning and the Physical Sciences Workshop, NeurIPS 2024.
+
+
 ```bibtex
 @article{Kofler_2024,
-  author     = {Kofler, Annalena and Stimper, Vincent and Mikhail, Mikhasenko and Kagan, Michael and Heinrich, Lukas},
+  author     = {Kofler, Annalena and Stimper, Vincent and Mikhasenko, Mikhail and Kagan, Michael and Heinrich, Lukas},
   title      = {Flow Annealed Importance Sampling Bootstrap meets Differentiable Particle Physics},
   year       = 2024,
   journal    = {},
@@ -61,3 +64,26 @@ If you find this code useful, please cite our paper:
 }
 ```
 If you run FAB, please cite the original paper:
+
+> Laurence I. Midgley, Vincent Stimper, Gregor N. C. Simm, Bernhard Schölkopf, José Miguel Hernández-Lobato.
+> Flow Annealed Importance Sampling Bootstrap. The Eleventh International Conference on Learning Representations. 2023.
+
+**Bibtex**
+
+```
+@inproceedings{
+midgley2023flow,
+title={Flow Annealed Importance Sampling Bootstrap},
+author={Laurence Illing Midgley and Vincent Stimper and Gregor N. C. Simm and Bernhard Sch{\"o}lkopf and Jos{\'e} Miguel Hern{\'a}ndez-Lobato},
+booktitle={The Eleventh International Conference on Learning Representations },
+year={2023},
+url={https://openreview.net/forum?id=XCTVFJwS9LJ}
+}
+```
+
+### Remarks about the versioning:
+`FAB` depends on a specific `blackjax-nightly` release which is not compatible with every `JAX` version. If you run into dependency issues (like me), you need to specify the `JAX` version explicitely which is already included in the `pyproject.toml` file. Releases that worked for me in the past are `jax==0.4.13 jaxlib==0.4.13` and `jax==0.4.23 jaxlib==0.4.23`.
+The reason is that `jax.random.PRNGKeyArray` (used by this `blackjax` version) is [removed in JAX v0.4.24](https://stackoverflow.com/questions/78302031/stable-diffusion-attributeerror-module-jax-random-has-no-attribute-keyarray).
+Additionally, these JAX versions are only compatible with numpy v1.x due to [changes in the `copy` keyword for v2.0](https://numpy.org/devdocs/numpy_2_0_migration_guide.html#adapting-to-changes-in-the-copy-keyword) and `scipy` v.11 because `scipy.linalg.tril` gets removed in v.12+. 
+Since numpy v1.x uses `pkgutil` during installation with `pip` which is removed in python v.3.12., this package can only run with python 3.11. or earlier.
+At the time of publication (November 2024), installation with `pip install -e .` should be working without additional changes.
