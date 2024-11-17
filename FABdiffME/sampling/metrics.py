@@ -2,6 +2,7 @@ import chex
 import jax
 import jax.numpy as jnp
 
+
 def log_sampling_efficiency(log_weights: chex.Array) -> chex.Array:
     """
     Numerically stable computation of log of sampling efficiency epsilon.
@@ -14,10 +15,11 @@ def log_sampling_efficiency(log_weights: chex.Array) -> chex.Array:
         Scalar log efficiency.
     """
     n_samples = log_weights.shape[0]
-    first_term = 2. * jax.scipy.special.logsumexp(log_weights)
-    second_term = jax.scipy.special.logsumexp(2.*log_weights)
-    
+    first_term = 2.0 * jax.scipy.special.logsumexp(log_weights)
+    second_term = jax.scipy.special.logsumexp(2.0 * log_weights)
+
     return first_term - second_term - jnp.log(n_samples)
+
 
 def sampling_efficiency(weights: chex.Array) -> chex.Array:
     """
@@ -30,10 +32,11 @@ def sampling_efficiency(weights: chex.Array) -> chex.Array:
         Scalar efficiency.
     """
     n_samples = weights.shape[0]
-    first_term = jnp.sum(weights)**2
+    first_term = jnp.sum(weights) ** 2
     second_term = jnp.sum(weights**2)
-    
-    return 1/n_samples * first_term / second_term
+
+    return 1 / n_samples * first_term / second_term
+
 
 def log_unweighting_efficiency(log_weights: chex.Array) -> chex.Array:
     """
@@ -49,8 +52,9 @@ def log_unweighting_efficiency(log_weights: chex.Array) -> chex.Array:
     n_samples = log_weights.shape[0]
     first_term = jax.scipy.special.logsumexp(log_weights)
     second_term = jnp.max(log_weights)
-    
+
     return first_term - second_term - jnp.log(n_samples)
+
 
 def unweighting_efficiency(weights: chex.Array) -> chex.Array:
     """
@@ -65,5 +69,14 @@ def unweighting_efficiency(weights: chex.Array) -> chex.Array:
     n_samples = weights.shape[0]
     first_term = jnp.sum(weights) / n_samples
     second_term = jnp.max(weights)
-    
+
     return first_term / second_term
+
+
+def integral_estimate(log_w: chex.Array) -> Tuple[chex.Array, chex.Array]:
+    # TODO: replace by jax.nn.logsumexp(log_w, axis=-1) - jnp.log(len(log_w))
+    weights = jnp.exp(log_w)
+    integral = jnp.mean(weights)
+    integral_std = jnp.std(weights) / jnp.sqrt(len(weights))
+
+    return integral, integral_std
