@@ -1,0 +1,35 @@
+target:
+  name: lambdac
+  dim: 2
+  center_of_mass_energy: 1000   # [GeV], only for madjax matrix elements
+  model_parameters: {}          # only for madjax matrix elements
+  epsilon_boundary: 1.e-5       # prevent instable behavior at boundary of matrix element
+  generator: rej                # generator of data: rejection sampling "rej" vs. "vegas" vs. "madgraph"
+  n_samples_val: 10000          # only multiple of n_samples_per_file = 1000
+  n_samples_test: 10000         # only multiple of n_samples_per_file = 1000
+  n_samples_per_file: 1000
+  data_dir: ./data/lambdac
+
+model:
+  n_trafos: 10
+  n_bins: 10
+  n_bijector_params: 31 # 3*n_bins+1
+  hidden_layer_sizes: [100, 100]
+
+training:
+  type: rkld
+  n_iterations: 3000
+  batch_size: 1000
+  #eval_batch_size: 1000 # 256  # effectively corresponds to n_samples_ESS
+  plot_batch_size: 0
+  n_samples_ESS: 1000
+  n_eval_and_plot: 20
+  eval_and_plot_scale: log # or linear
+  n_checkpoints: 2
+  lr: 3.e-4
+  use_schedule: False
+  dynamic_grad_ignore_and_clip: True # Ignore massive gradients.
+  seed: 41
+  save: True
+  save_root: ./paper_experiments/2d/lambdac/rkld/1
+  use_64_bit: True       # Can help improve stability.
