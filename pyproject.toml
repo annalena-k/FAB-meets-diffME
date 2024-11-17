@@ -35,7 +35,7 @@ dependencies = [
     "jaxlib",
     "jupyter",
     "matplotlib",
-    "madjax",
+    "madjax@git+https://github.com/madjax-hep/madjax.git",
     "numpy",
     "optax",
     "pandas",
