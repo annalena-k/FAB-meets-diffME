@@ -1,4 +1,7 @@
 # Flow Annealed importance sampling Bootstrap (FAB) meets Differentiable Matrix Elements (ME)
+![Python 3.10](https://img.shields.io/badge/python-3.10+-blue)
+[![Data availability](https://img.shields.io/badge/Data-Available_on_Edmond-31705e)](https://doi.org/10.17617/3.UZ786R)
+
 This repository contains the code for the research paper:
 
 > A. Kofler, V. Stimper, M. Mikhailenko, M. Kagan, L. Heinrich
@@ -40,6 +43,10 @@ or for the developmental install:
 ```bash
 pip install -e ."[dev]"
 ```
+
+## 📈 Data
+The data used for training the model with the forward KL divergence are available via [Edmond](https://doi.org/10.17617/3.UZ786R).
+The samples for $\lambda_c^+ \rightarrow pK^-\pi^+$ were generated with rejection sampling, while the samples for $e^+e^- \rightarrow t\bar{t}, t\rightarrow W^+ b, \bar{t} \rightarrow W^- \bar{b}$ were obtained via `MadGraph`.
 
 ## 📜 Citation
 
