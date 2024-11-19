@@ -8,9 +8,6 @@ This repository contains the code for the research paper:
 
 ---
 
-## ⚛️ What is the goal of this paper?
-
-
 ## 🚀 Quickstart
 
 To install the code in this repository, clone the code with
@@ -67,8 +64,6 @@ If you run FAB, please cite the original paper:
 
 > Laurence I. Midgley, Vincent Stimper, Gregor N. C. Simm, Bernhard Schölkopf, José Miguel Hernández-Lobato.
 > Flow Annealed Importance Sampling Bootstrap. The Eleventh International Conference on Learning Representations. 2023.
-
-**Bibtex**
 
 ```
 @inproceedings{
