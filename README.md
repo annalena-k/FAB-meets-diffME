@@ -7,7 +7,7 @@ This repository contains the code for the research paper:
 > A. Kofler, V. Stimper, M. Mikhailenko, M. Kagan, L. Heinrich
 > "Flow Annealed Importance Samling Bootstrap meets Differentiable Particle Physics." 
 > Accepted at the _Machine Learning and the Physical Sciences Workshop, NeurIPS 2024_ 
-> 🏆 Selected for a *spotlight contributed talk* (best 5%)!
+> 🏆 Selected for a *spotlight contributed talk* (best 2%)!
 
 ---
 
