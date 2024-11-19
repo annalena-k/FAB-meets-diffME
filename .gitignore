@@ -166,4 +166,4 @@ cython_debug/
 venv-fab-meets-diffme/
 **_version.py
 # training data
-#/data/*
+/data/*
