@@ -1,4 +1,4 @@
-# Flow Annealed importance sampling Bootstrap (FAB) meets differentiable Matrix Elements (ME)
+# Flow Annealed importance sampling Bootstrap (FAB) meets Differentiable Matrix Elements (ME)
 This repository contains the code for the research paper:
 
 > A. Kofler, V. Stimper, M. Mikhailenko, M. Kagan, L. Heinrich
