@@ -83,9 +83,11 @@ url={https://openreview.net/forum?id=XCTVFJwS9LJ}
 }
 ```
 
-## Remarks about the versioning:
-`FAB` depends on a specific `blackjax-nightly` release which is not compatible with every `JAX` version. If you run into dependency issues (like me), you need to specify the `JAX` version explicitely which is already included in the `pyproject.toml` file. Releases that worked for me in the past are `jax==0.4.13 jaxlib==0.4.13` and `jax==0.4.23 jaxlib==0.4.23`.
+## 📎 Remarks about the versioning
+`FAB` depends on a specific `blackjax-nightly` release which is not compatible with every `JAX` version. If you run into dependency issues (like I did), you need to specify the `JAX` version explicitely which is already included in the `pyproject.toml` file. Releases that worked for me in the past are `jax==0.4.13 jaxlib==0.4.13` and `jax==0.4.23 jaxlib==0.4.23`.
 The reason is that `jax.random.PRNGKeyArray` (used by this `blackjax` version) is [removed in JAX v0.4.24](https://stackoverflow.com/questions/78302031/stable-diffusion-attributeerror-module-jax-random-has-no-attribute-keyarray).
 Additionally, these JAX versions are only compatible with numpy v1.x due to [changes in the `copy` keyword for v2.0](https://numpy.org/devdocs/numpy_2_0_migration_guide.html#adapting-to-changes-in-the-copy-keyword) and `scipy` v.11 because `scipy.linalg.tril` gets removed in v.12+. 
 Since numpy v1.x uses `pkgutil` during installation with `pip` which is removed in python v.3.12., this package can only run with python 3.11. or earlier.
 At the time of publication (November 2024), installation with `pip install -e .` should be working without additional changes.
+
+For reference and reproducibility, I included a screenshot of the packages installed in the environment with which the results were created named `requirements_screenshot_20241117.txt`.
