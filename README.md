@@ -46,7 +46,7 @@ pip install -e ."[dev]"
 
 ## 📈 Data
 The data used for training the model with the forward KL divergence are available via [Edmond](https://doi.org/10.17617/3.UZ786R).
-The samples for $\lambda_c^+ \rightarrow pK^-\pi^+$ were generated with rejection sampling, while the samples for $e^+e^- \rightarrow t\bar{t}, t\rightarrow W^+ b, \bar{t} \rightarrow W^- \bar{b}$ were obtained via `MadGraph`.
+The samples for $\Lambda_c^+ \rightarrow pK^-\pi^+$ were generated with rejection sampling, while the samples for $e^+e^- \rightarrow t\bar{t}, t\rightarrow W^+ b, \bar{t} \rightarrow W^- \bar{b}$ were obtained via `MadGraph`.
 
 ## 📜 Citation
 
@@ -83,7 +83,7 @@ url={https://openreview.net/forum?id=XCTVFJwS9LJ}
 }
 ```
 
-### Remarks about the versioning:
+## Remarks about the versioning:
 `FAB` depends on a specific `blackjax-nightly` release which is not compatible with every `JAX` version. If you run into dependency issues (like me), you need to specify the `JAX` version explicitely which is already included in the `pyproject.toml` file. Releases that worked for me in the past are `jax==0.4.13 jaxlib==0.4.13` and `jax==0.4.23 jaxlib==0.4.23`.
 The reason is that `jax.random.PRNGKeyArray` (used by this `blackjax` version) is [removed in JAX v0.4.24](https://stackoverflow.com/questions/78302031/stable-diffusion-attributeerror-module-jax-random-has-no-attribute-keyarray).
 Additionally, these JAX versions are only compatible with numpy v1.x due to [changes in the `copy` keyword for v2.0](https://numpy.org/devdocs/numpy_2_0_migration_guide.html#adapting-to-changes-in-the-copy-keyword) and `scipy` v.11 because `scipy.linalg.tril` gets removed in v.12+. 
