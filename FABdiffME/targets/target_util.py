@@ -46,7 +46,6 @@ def move_away_from_boundary(samples, epsilon):
 
 def load_target(
     name: str,
-    path_to_target: str = None,
     dim: int = None,
     center_of_mass_energy: float = None,
     model_parameters: dict = None,
@@ -54,9 +53,6 @@ def load_target(
 ) -> Target:
     """Load specific target
     name: str, one of ["pi1800", "lambdac", "ee_to_mumu"]
-    path_to_target: str
-            for lambdac: path is folder path, e.g. diffME/targets/lambdac_model.pkl
-            for ee_to_mumu: path is module path, e.g. diffME.targets.madjax_ee_to_mumu
     dim: int, dimensionality of matrix element
     center_of_mass_energy: float, specifies center of mass energy of scattering
     model_parameters: dict, ={} for default parameters, see ee_to_mumu_test.ipynb for non-standard example
