@@ -19,7 +19,7 @@ model:
 
 training:
   type: fkld
-  epochs: 100
+  epochs: 200
   batch_size: 1000
   #eval_batch_size: 1000 # 256  
   plot_batch_size: 1000 # 1000
