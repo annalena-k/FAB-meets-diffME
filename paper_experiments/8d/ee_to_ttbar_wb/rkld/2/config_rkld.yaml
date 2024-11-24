@@ -19,7 +19,7 @@ model:
 
 training:
   type: rkld
-  n_iterations: 10000000
+  n_iterations: 100000000
   batch_size: 1000
   #eval_batch_size: 1000 # 256  # effectively corresponds to n_samples_ESS
   plot_batch_size: 0 # 1000
