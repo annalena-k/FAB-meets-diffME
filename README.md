@@ -1,5 +1,5 @@
 # Flow Annealed importance sampling Bootstrap (FAB) meets Differentiable Particle Physics
-![Python 3.10](https://img.shields.io/badge/python-3.10+-blue)
+![Python 3.9](https://img.shields.io/badge/python-3.9-blue)
 [![Data availability](https://img.shields.io/badge/Data-Available_on_Edmond-31705e)](https://doi.org/10.17617/3.UZ786R)
 
 This repository contains the code for the research paper:
