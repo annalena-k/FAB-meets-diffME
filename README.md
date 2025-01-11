@@ -53,18 +53,18 @@ The samples for $\Lambda_c^+ \rightarrow pK^-\pi^+$ were generated with rejectio
 If you find this code useful, please cite our paper:
 
 > Annalena Kofler, Vincent Stimper, Mikhail Mikhasenko, Michael Kagan, Lukas Heinrich.
-> Flow Annealed Importance Sampling Bootstrap meets Differentiable Particle Physics. Machine Learning and the Physical Sciences Workshop, NeurIPS 2024.
+> Flow Annealed Importance Sampling Bootstrap meets Differentiable Particle Physics. Machine Learning and the Physical Sciences workshop at NeurIPS 2024.
 
 
 ```bibtex
 @article{Kofler_2024,
   author     = {Kofler, Annalena and Stimper, Vincent and Mikhasenko, Mikhail and Kagan, Michael and Heinrich, Lukas},
   title      = {Flow Annealed Importance Sampling Bootstrap meets Differentiable Particle Physics},
-  year       = 2024,
-  journal    = {},
-  eprint     = {},
+  year       = {2024},
+  month      = {11},
+  eprint     = {2411.16234},
   eprinttype = {arXiv},
-  addendum   = {},
+  addendum   = {Accepted at the Machine Learning and the Physical Sciences workshop at NeurIPS 2024}
 }
 ```
 If you run FAB, please cite the original paper:
