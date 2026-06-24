@@ -6,8 +6,8 @@ This repository contains the code for the research paper:
 
 > A. Kofler, V. Stimper, M. Mikhailenko, M. Kagan, L. Heinrich
 > "Flow Annealed Importance Samling Bootstrap meets Differentiable Particle Physics." 
-> Accepted at the _Machine Learning and the Physical Sciences Workshop, NeurIPS 2024_ 
-> 🏆 Selected for a *spotlight contributed talk* (best 2%)!
+> Published in _Machine Learning: Science and Technology_
+> 🏆 Selected for a *spotlight contributed talk* at the _Machine Learning and the Physical Sciences Workshop, NeurIPS 2024_ (best 2%)
 
 ---
 
@@ -53,18 +53,24 @@ The samples for $\Lambda_c^+ \rightarrow pK^-\pi^+$ were generated with rejectio
 If you find this code useful, please cite our paper:
 
 > Annalena Kofler, Vincent Stimper, Mikhail Mikhasenko, Michael Kagan, Lukas Heinrich.
-> Flow Annealed Importance Sampling Bootstrap meets Differentiable Particle Physics. Machine Learning and the Physical Sciences workshop at NeurIPS 2024.
+> Flow Annealed Importance Sampling Bootstrap meets Differentiable Particle Physics. 
+> Mach. Learn.: Sci. Technol. 6 025061, 2025
+> DOI: [10.1088/2632-2153/addbc1](https://doi.org/10.1088/2632-2153/addbc1)
 
 
 ```bibtex
-@article{Kofler_2024,
-  author     = {Kofler, Annalena and Stimper, Vincent and Mikhasenko, Mikhail and Kagan, Michael and Heinrich, Lukas},
-  title      = {Flow Annealed Importance Sampling Bootstrap meets Differentiable Particle Physics},
-  year       = {2024},
-  month      = {11},
-  eprint     = {2411.16234},
-  eprinttype = {arXiv},
-  addendum   = {Accepted at the Machine Learning and the Physical Sciences workshop at NeurIPS 2024}
+@article{Kofler_2025,
+doi = {10.1088/2632-2153/addbc1},
+url = {https://doi.org/10.1088/2632-2153/addbc1},
+year = {2025},
+month = {jun},
+publisher = {IOP Publishing},
+volume = {6},
+number = {2},
+pages = {025061},
+author = {Kofler, Annalena and Stimper, Vincent and Mikhasenko, Mikhail and Kagan, Michael and Heinrich, Lukas},
+title = {Flow annealed importance sampling bootstrap meets differentiable particle physics},
+journal = {Machine Learning: Science and Technology},
 }
 ```
 If you run FAB, please cite the original paper:
